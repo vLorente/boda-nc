@@ -1,0 +1,67 @@
+{
+	"name": "Boda NC DevContainer",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
+
+	"forwardPorts": [4321, 5173],
+	"portsAttributes": {
+		"4321": {
+			"label": "Astro Dev Server",
+			"onAutoForward": "notify",
+			"protocol": "http"
+		},
+		"5173": {
+			"label": "Vite Dev Server",
+			"onAutoForward": "notify",
+			"protocol": "http"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"EditorConfig.EditorConfig",
+				"astro-build.astro-vscode",
+				"yzhang.markdown-all-in-one",
+				"ms-vscode.live-server",
+				"kisstkondoros.vscode-gutter-preview",
+				"bradlc.vscode-tailwindcss",
+				"GitHub.vscode-pull-request-github",
+				"humao.rest-client",
+				"pflannery.vscode-versionlens"
+			],
+			"settings": {
+				// Asegura que VS Code use pnpm
+				"npm.packageManager": "pnpm"
+			}
+		}
+	},
+
+	"workspaceFolder": "/workspaces/boda-nc",
+	"remoteUser": "root",
+	"mounts": [
+		// A. Volumen para node_modules (dependencias específicas del proyecto)
+		{
+			"source": "v1-node_modules-boda-nc",
+			"target": "/workspaces/boda-nc/node_modules",
+			"type": "volume"
+		},
+		// B. Volumen para el pnpm-store (caché global de paquetes)
+		{
+			"source": "v1-pnpm-store-boda-nc",
+			"target": "/workspaces/boda-nc/.pnpm-store",
+			"type": "volume"
+		}
+	],
+
+	// "runArgs": [
+	//   "--network",
+	//   "landing-page-backend_devcontainer_landing-net"
+	// ],
+
+	"postCreateCommand": "pnpm install"
+}
