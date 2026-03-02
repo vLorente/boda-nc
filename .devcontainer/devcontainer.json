@@ -58,10 +58,5 @@
 		}
 	],
 
-	// "runArgs": [
-	//   "--network",
-	//   "landing-page-backend_devcontainer_landing-net"
-	// ],
-
-	"postCreateCommand": "pnpm install"
+	"postCreateCommand": "npm install"
 }

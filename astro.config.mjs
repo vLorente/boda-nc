@@ -45,8 +45,19 @@ export default defineConfig({
 		Image: false,
 		SVG: false,
 	}), react()],
-
+	server: {
+		host: "0.0.0.0",
+		port: 4321,
+	},
 	vite: {
+		server: {
+			host: "0.0.0.0",
+			watch: {
+				usePolling: true,
+				interval: 1000,
+				ignored: ["**/docs/**", "**/playwright-report/**", "**/coverage/**"],
+			},
+		},
 		plugins: [tailwindcss({
 			globalStyle: "./src/styles/global.css",
 			applyBaseStyles: false,

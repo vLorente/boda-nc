@@ -13,8 +13,8 @@ interface ImageMetadata {
 const galleryPath = "public/gallery/*/*.webp";
 const metaPath = "src/data/meta-gallery.json";
 
-// Initialize metadata array
-const metaImages: [ImageMetadata[], ImageMetadata[]] = [[], []];
+// Initialize metadata array - dynamically sized
+const metaImages: ImageMetadata[][] = [];
 
 const files = await glob(galleryPath, {});
 console.log(`Found ${files.length} files in gallery`);
@@ -26,6 +26,11 @@ for await (const file of files) {
 
 	const imageNumber = Number(file.match(/img-(\d+)/)?.[1] || "");
 	const category = Number(file.match(/\/(\d+)\//)?.[1] || "");
+
+	// Ensure category array exists
+	if (!metaImages[category - 1]) {
+		metaImages[category - 1] = [];
+	}
 
 	metaImages[category - 1][imageNumber - 1] = { height, width };
 }

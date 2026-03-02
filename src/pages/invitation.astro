@@ -3,12 +3,10 @@ export const prerender = false; // Not needed in 'server' mode
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Contact from "@components/Contact/Contact.astro";
 import Hero from "@components/Hero/Hero.astro";
 import Testimonials from "@components/Testimonials/Testimonials.astro";
 import siteData from "@config/siteData.json";
 
-import BankAccount from "@components/BankAccount/BankAccount.astro";
 import Locations from "@components/Locations/Locations.astro";
 import Message from "@components/Message/Message.astro";
 import WeddingCountdown from "@components/WeddingCountdown/WeddingCountdown.astro";
@@ -36,6 +34,6 @@ const buttonLink = "#wedding-date";
 	<Message />
 	<WeddingSchedule />
 	<WeddingCountdown />
-	<BankAccount />
-	<Contact />
+	<!-- <BankAccount /> -->
+	<!-- <Contact /> -->
 </BaseLayout>

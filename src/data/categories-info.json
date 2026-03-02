@@ -1,10 +1,14 @@
 [
 	{
 		"category": "1",
-		"name": "Celebración"
+		"name": "Fotos 1"
+	},
+  {
+		"category": "2",
+		"name": "Fotos 2"
 	},
 	{
-		"category": "2",
+		"category": "3",
 		"name": "Fotomatón"
 	},
 	{
